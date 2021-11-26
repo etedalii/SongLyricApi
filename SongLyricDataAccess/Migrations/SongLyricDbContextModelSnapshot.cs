@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SongLyricDataAccess.Data;
+using SongLyricDataAccess.Data.Repository.IRepository;
 
 namespace SongLyricDataAccess.Migrations
 {

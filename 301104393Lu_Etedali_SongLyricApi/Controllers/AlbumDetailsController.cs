@@ -22,18 +22,11 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
             _context = context;
         }
 
-        // GET: api/AlbumDetails
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlbumDetail>>> GetAlbumDetails()
-        {
-            return Ok(await _context.AlbumDetail.GetAllAsync());
-        }
-
         // GET: api/AlbumDetails/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AlbumDetail>> GetAlbumDetail(int id)
         {
-            var albumDetail = await _context.AlbumDetail.FindAsync(id);
+            var albumDetail = await _context.AlbumDetail.GetAllAsync(_ => _.AlbumId == id);
 
             if (albumDetail == null)
             {
