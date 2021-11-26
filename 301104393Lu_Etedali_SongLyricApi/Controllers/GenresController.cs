@@ -59,16 +59,20 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGenre(int id, Genre genre)
         {
-            if (id != genre.Id)
-            {
+            if (genre == null)
                 return BadRequest();
-            }
 
-            _context.Genre.Update(genre);
+            var oldGenre = _context.Genre.Find(id);
+            var result = _mapper.Map<Genre>(genre);
+            oldGenre.GenreName = result.GenreName;
 
+            _context.Genre.Update(oldGenre);
             try
             {
-                await _context.SaveAsync();
+                if (await _context.SaveAsync() == 0)
+                {
+                    return StatusCode(500, "A problem with handelling your request.");
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -94,8 +98,7 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
                 return BadRequest();
 
             var result = _mapper.Map<Genre>(genre);
-
-            _context.Genre.Insert(result);
+            _context.Genre.Insert(new Genre() {  GenreName = result.GenreName});
             if (await _context.SaveAsync() == 0)
             {
                 return StatusCode(500, "A problem with handelling your request.");
@@ -116,7 +119,6 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
             }
 
             _context.Genre.Remove(genre);
-            _context.Save();
             if (await _context.SaveAsync() == 0)
             {
                 return StatusCode(500, "A problem with handelling your request.");
