@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/301104393Lu_Etedali_SongLyricApi/aws-ecs-tools-defaults.json

@@ -59,7 +59,7 @@ namespace _301104393Lu_Etedali_SongLyricApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseAuthorization();
 
             dbInitializer.Initialize();
