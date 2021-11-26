@@ -8,7 +8,7 @@ using SongLyricDataAccess.Data;
 
 namespace SongLyricDataAccess.Migrations
 {
-    [DbContext(typeof(SongLyricDbContext))]
+    [DbContext(typeof(IUnitOfWork))]
     partial class SongLyricDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

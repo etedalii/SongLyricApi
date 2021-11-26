@@ -9,7 +9,7 @@ using SongLyricDataAccess.Data;
 
 namespace SongLyricDataAccess.Migrations
 {
-    [DbContext(typeof(SongLyricDbContext))]
+    [DbContext(typeof(IUnitOfWork))]
     [Migration("20211125044106_initialDatabase")]
     partial class initialDatabase
     {
