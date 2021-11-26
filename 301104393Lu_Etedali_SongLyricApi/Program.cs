@@ -13,10 +13,6 @@ namespace _301104393Lu_Etedali_SongLyricApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((context, builder) =>
-                {
-                    builder.AddSystemsManager("/301056465Etedali");
-                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
