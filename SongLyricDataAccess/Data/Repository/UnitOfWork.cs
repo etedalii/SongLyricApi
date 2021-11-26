@@ -36,6 +36,11 @@ namespace SongLyricDataAccess.Data.Repository
             return _dbContext.SaveChanges();
         }
 
+        public async Task<int> SaveAsync()
+        {
+            return await _dbContext.SaveChangesAsync();
+        }
+
         public void Dispose()
         {
             _dbContext.Dispose();

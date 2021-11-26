@@ -9,6 +9,7 @@ namespace SongLyricDataAccess.Data.Repository.IRepository
 	public interface IRepository<T> where T : class
 	{
 		T Find(int id);
+		Task<T> FindAsync(int id);
 
 		Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null,Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null,string includeProperties = null);
 
@@ -24,5 +25,8 @@ namespace SongLyricDataAccess.Data.Repository.IRepository
 
 		Task<int> CountAsync();
 		Task<int> CountAsync(Expression<Func<T, bool>> expression);
+
+		bool Any(Expression<Func<T, bool>> expression);
+		Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
 	}
 }

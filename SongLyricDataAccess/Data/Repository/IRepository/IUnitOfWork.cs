@@ -1,4 +1,6 @@
-﻿namespace SongLyricDataAccess.Data.Repository.IRepository
+﻿using System.Threading.Tasks;
+
+namespace SongLyricDataAccess.Data.Repository.IRepository
 {
     public interface IUnitOfWork
     {
@@ -8,5 +10,6 @@
         IGenreRepository Genre { get; }
         ISongRepository Song { get; }
         int Save();
+        Task<int> SaveAsync();
     }
 }

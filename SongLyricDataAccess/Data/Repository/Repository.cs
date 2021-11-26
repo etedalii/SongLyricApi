@@ -30,6 +30,11 @@ namespace SongLyricDataAccess.Data.Repository
 			return dbSet.Find(id);
 		}
 
+		public async Task<T> FindAsync(int id)
+		{
+			return await dbSet.FindAsync(id);
+		}
+
 		public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, string includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
@@ -109,6 +114,16 @@ namespace SongLyricDataAccess.Data.Repository
 		public async Task<int> CountAsync(Expression<Func<T, bool>> expression)
 		{
 			return await dbSet.Where(expression).CountAsync();
+		}
+
+		public bool Any(Expression<Func<T, bool>> expression)
+		{
+			return dbSet.Any(expression);
+		}
+
+		public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
+		{
+			return await dbSet.AnyAsync(expression);
 		}
 	}
 }

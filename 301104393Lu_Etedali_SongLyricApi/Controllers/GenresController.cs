@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SongLyricDataAccess.Data;
+using SongLyricDataAccess.Data.Repository.IRepository;
 using SongLyricEntities;
 
 namespace _301104393Lu_Etedali_SongLyricApi.Controllers
@@ -14,9 +15,9 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
     [ApiController]
     public class GenresController : ControllerBase
     {
-        private readonly SongLyricDbContext _context;
+        private readonly IUnitOfWork _context;
 
-        public GenresController(SongLyricDbContext context)
+        public GenresController(IUnitOfWork context)
         {
             _context = context;
         }
@@ -25,14 +26,14 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Genre>>> GetGenres()
         {
-            return await _context.Genres.ToListAsync();
+            return Ok(await _context.Genre.GetAllAsync());
         }
 
         // GET: api/Genres/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Genre>> GetGenre(int id)
         {
-            var genre = await _context.Genres.FindAsync(id);
+            var genre = await _context.Genre.FindAsync(id);
 
             if (genre == null)
             {
@@ -52,11 +53,11 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(genre).State = EntityState.Modified;
+            _context.Genre.Update(genre);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.SaveAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,8 +79,8 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Genre>> PostGenre(Genre genre)
         {
-            _context.Genres.Add(genre);
-            await _context.SaveChangesAsync();
+            _context.Genre.Insert(genre);
+            await _context.SaveAsync();
 
             return CreatedAtAction("GetGenre", new { id = genre.Id }, genre);
         }
@@ -88,21 +89,21 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGenre(int id)
         {
-            var genre = await _context.Genres.FindAsync(id);
+            var genre = await _context.Genre.FindAsync(id);
             if (genre == null)
             {
                 return NotFound();
             }
 
-            _context.Genres.Remove(genre);
-            await _context.SaveChangesAsync();
+            _context.Genre.Remove(genre);
+            await _context.SaveAsync();
 
             return NoContent();
         }
 
         private bool GenreExists(int id)
         {
-            return _context.Genres.Any(e => e.Id == id);
+            return _context.Genre.Any(e => e.Id == id);
         }
     }
 }
