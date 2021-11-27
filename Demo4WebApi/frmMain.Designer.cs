@@ -87,6 +87,7 @@
             this.menuSong.Name = "menuSong";
             this.menuSong.Size = new System.Drawing.Size(46, 20);
             this.menuSong.Text = "Song";
+            this.menuSong.Click += new System.EventHandler(this.menuSong_Click);
             // 
             // menuAlbum
             // 

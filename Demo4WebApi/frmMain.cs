@@ -35,5 +35,11 @@ namespace Demo4WebApi
             frmAlbum frm = new frmAlbum();
             frm.ShowDialog();
         }
+
+        private void menuSong_Click(object sender, EventArgs e)
+        {
+            frmSong frm = new frmSong();
+            frm.ShowDialog();
+        }
     }
 }
