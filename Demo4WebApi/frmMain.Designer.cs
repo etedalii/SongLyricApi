@@ -34,7 +34,9 @@
             this.menuGenre = new System.Windows.Forms.ToolStripMenuItem();
             this.menuArtist = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSong = new System.Windows.Forms.ToolStripMenuItem();
+            this.SAlbum = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAlbum = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAlbumDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +63,7 @@
             this.menuGenre,
             this.menuArtist,
             this.menuSong,
-            this.menuAlbum});
+            this.SAlbum});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(734, 24);
@@ -89,12 +91,28 @@
             this.menuSong.Text = "Song";
             this.menuSong.Click += new System.EventHandler(this.menuSong_Click);
             // 
+            // SAlbum
+            // 
+            this.SAlbum.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAlbum,
+            this.menuAlbumDetail});
+            this.SAlbum.Name = "SAlbum";
+            this.SAlbum.Size = new System.Drawing.Size(55, 20);
+            this.SAlbum.Text = "Album";
+            // 
             // menuAlbum
             // 
             this.menuAlbum.Name = "menuAlbum";
-            this.menuAlbum.Size = new System.Drawing.Size(55, 20);
+            this.menuAlbum.Size = new System.Drawing.Size(180, 22);
             this.menuAlbum.Text = "Album";
             this.menuAlbum.Click += new System.EventHandler(this.menuAlbum_Click);
+            // 
+            // menuAlbumDetail
+            // 
+            this.menuAlbumDetail.Name = "menuAlbumDetail";
+            this.menuAlbumDetail.Size = new System.Drawing.Size(180, 22);
+            this.menuAlbumDetail.Text = "AlbumDetails";
+            this.menuAlbumDetail.Click += new System.EventHandler(this.menuAlbumDetail_Click);
             // 
             // frmMain
             // 
@@ -128,6 +146,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuGenre;
         private System.Windows.Forms.ToolStripMenuItem menuArtist;
         private System.Windows.Forms.ToolStripMenuItem menuSong;
+        private System.Windows.Forms.ToolStripMenuItem SAlbum;
         private System.Windows.Forms.ToolStripMenuItem menuAlbum;
+        private System.Windows.Forms.ToolStripMenuItem menuAlbumDetail;
     }
 }

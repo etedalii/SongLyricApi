@@ -30,16 +30,21 @@ namespace Demo4WebApi
             frm.ShowDialog();
         }
 
+        private void menuSong_Click(object sender, EventArgs e)
+        {
+            frmSong frm = new frmSong();
+            frm.ShowDialog();
+        }
+
         private void menuAlbum_Click(object sender, EventArgs e)
         {
             frmAlbum frm = new frmAlbum();
             frm.ShowDialog();
         }
 
-        private void menuSong_Click(object sender, EventArgs e)
+        private void menuAlbumDetail_Click(object sender, EventArgs e)
         {
-            frmSong frm = new frmSong();
-            frm.ShowDialog();
+
         }
     }
 }
