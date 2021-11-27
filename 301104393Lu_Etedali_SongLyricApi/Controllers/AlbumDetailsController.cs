@@ -27,13 +27,16 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
         public async Task<ActionResult<AlbumDetail>> GetAlbumDetail(int id)
         {
             var albumDetail = await _context.AlbumDetail.GetAllAsync(_ => _.AlbumId == id);
+            var albums = await _context.Album.GetAllAsync(_ => _.Id == id);
+            var songs = await _context.Song.GetAllAsync();
 
-            if (albumDetail == null)
-            {
-                return NotFound();
-            }
+            var query =
+               (from albumdetails in albumDetail
+                join album in albums on albumdetails.AlbumId equals album.Id
+                join song in songs on albumdetails.SongId equals song.Id
+                select new { Id = albumdetails.Id, AlbumName = album.AlbumName, SongTitle = song.Title, AlbumId = album.Id, SongId = song.Id }).ToList();
 
-            return Ok(albumDetail);
+            return Ok(query);
         }
 
         // PUT: api/AlbumDetails/5

@@ -32,23 +32,15 @@ namespace Demo4WebApi
             cmbAlbum.DisplayMember = "AlbumName";
             cmbAlbum.ValueMember = "Id";
             cmbAlbum.DataSource = albums.ToList();
+
+            cmbAlbumSearch.DisplayMember = "AlbumName";
+            cmbAlbumSearch.ValueMember = "Id";
+            cmbAlbumSearch.DataSource = albums.ToList();
         }
 
-        private async Task LoadData()
-        {
-            dgvAlbumDetail.Rows.Clear();
-            foreach (var item in await new WebApiHelper<AlbumDetailDto>().GetListAsync("api/albumdetails/"))
-            {
-                dgvAlbumDetail.Rows.Add(item.Id, item.AlbumName, item.SongTitle);
-                dgvAlbumDetail.Rows[dgvAlbumDetail.RowCount - 1].Tag = item.Id;
-            }
-        }
-
-
-        private async void frmAlbumDetail_Load(object sender, EventArgs e)
+         private async void frmAlbumDetail_Load(object sender, EventArgs e)
         {
             await LoadComboBoxes(); 
-            await LoadData();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -78,25 +70,22 @@ namespace Demo4WebApi
             }
         }
 
-        private async void btnShowAll_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
             await LoadData();
         }
 
-        private async void btnSearch_Click(object sender, EventArgs e)
+        private async Task LoadData()
         {
-            if (!string.IsNullOrEmpty(txtId.Text))
+            var item = await new WebApiHelper<AlbumDetailDto>().GetByIdAsync("api/AlbumDetails/", Convert.ToInt32(cmbAlbumSearch.SelectedValue));
+            if (item != null)
             {
-                var item = await new WebApiHelper<AlbumDetailDto>().GetByIdAsync("api/albumdetails/", Convert.ToInt32(txtId.Text));
-                if (item != null)
-                {
-                    dgvAlbumDetail.Rows.Clear();
-                    dgvAlbumDetail.Rows.Add(item.Id, item.AlbumName, item.SongTitle);
-                    dgvAlbumDetail.Rows[dgvAlbumDetail.RowCount - 1].Tag = item.Id;
-                }
-                else
-                    MessageBox.Show("The record not found!");
+                dgvAlbumDetail.Rows.Clear();
+                dgvAlbumDetail.Rows.Add(item.Id, item.AlbumName, item.SongTitle);
+                dgvAlbumDetail.Rows[dgvAlbumDetail.RowCount - 1].Tag = item.Id;
             }
+            else
+                MessageBox.Show("The record not found!");
         }
 
         private async void dgvAlbumDetail_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtId = new System.Windows.Forms.MaskedTextBox();
-            this.btnShowAll = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvAlbumDetail = new System.Windows.Forms.DataGridView();
@@ -46,6 +44,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbAlbumSearch = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbumDetail)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -53,8 +52,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtId);
-            this.groupBox2.Controls.Add(this.btnShowAll);
+            this.groupBox2.Controls.Add(this.cmbAlbumSearch);
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
@@ -64,28 +62,9 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
             // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(29, 25);
-            this.txtId.Mask = "0000000";
-            this.txtId.Name = "txtId";
-            this.txtId.PromptChar = ' ';
-            this.txtId.Size = new System.Drawing.Size(134, 23);
-            this.txtId.TabIndex = 3;
-            // 
-            // btnShowAll
-            // 
-            this.btnShowAll.Location = new System.Drawing.Point(278, 24);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(103, 23);
-            this.btnShowAll.TabIndex = 2;
-            this.btnShowAll.Text = "Show All";
-            this.btnShowAll.UseVisualStyleBackColor = true;
-            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
-            // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(169, 24);
+            this.btnSearch.Location = new System.Drawing.Point(217, 24);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(103, 23);
             this.btnSearch.TabIndex = 2;
@@ -239,6 +218,15 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Album:";
             // 
+            // cmbAlbumSearch
+            // 
+            this.cmbAlbumSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAlbumSearch.FormattingEnabled = true;
+            this.cmbAlbumSearch.Location = new System.Drawing.Point(29, 24);
+            this.cmbAlbumSearch.Name = "cmbAlbumSearch";
+            this.cmbAlbumSearch.Size = new System.Drawing.Size(182, 23);
+            this.cmbAlbumSearch.TabIndex = 3;
+            // 
             // frmAlbumDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -267,8 +255,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.MaskedTextBox txtId;
-        private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvAlbumDetail;
@@ -284,5 +270,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbAlbumSearch;
     }
 }
