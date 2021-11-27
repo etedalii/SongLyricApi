@@ -44,7 +44,8 @@ namespace Demo4WebApi
 
         private void menuAlbumDetail_Click(object sender, EventArgs e)
         {
-
+            frmAlbumDetail frm = new frmAlbumDetail();
+            frm.ShowDialog();
         }
     }
 }

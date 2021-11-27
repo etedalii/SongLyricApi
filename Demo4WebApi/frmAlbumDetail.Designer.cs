@@ -1,6 +1,6 @@
 ﻿namespace Demo4WebApi
 {
-    partial class frmAlbum
+    partial class frmAlbumDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -33,27 +33,21 @@
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvAlbum = new System.Windows.Forms.DataGridView();
+            this.dgvAlbumDetail = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AlbumName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReleaseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Singer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Genre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SongTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnReturn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbGenre = new System.Windows.Forms.ComboBox();
-            this.cmbArtist = new System.Windows.Forms.ComboBox();
-            this.dtpActiveFrom = new System.Windows.Forms.DateTimePicker();
+            this.cmbSong = new System.Windows.Forms.ComboBox();
+            this.cmbAlbum = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtAlbumName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbumDetail)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,9 +57,9 @@
             this.groupBox2.Controls.Add(this.btnShowAll);
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(2, 3);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(796, 71);
+            this.groupBox2.Size = new System.Drawing.Size(607, 71);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
@@ -87,6 +81,7 @@
             this.btnShowAll.TabIndex = 2;
             this.btnShowAll.Text = "Show All";
             this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // btnSearch
             // 
@@ -107,34 +102,31 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Id";
             // 
-            // dgvAlbum
+            // dgvAlbumDetail
             // 
-            this.dgvAlbum.AllowUserToAddRows = false;
-            this.dgvAlbum.AllowUserToDeleteRows = false;
-            this.dgvAlbum.AllowUserToOrderColumns = true;
-            this.dgvAlbum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAlbum.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvAlbumDetail.AllowUserToAddRows = false;
+            this.dgvAlbumDetail.AllowUserToDeleteRows = false;
+            this.dgvAlbumDetail.AllowUserToOrderColumns = true;
+            this.dgvAlbumDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlbumDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.AlbumName,
-            this.ReleaseDate,
-            this.Singer,
-            this.Genre,
+            this.SongTitle,
             this.edit,
             this.Delete});
-            this.dgvAlbum.Location = new System.Drawing.Point(2, 80);
-            this.dgvAlbum.MultiSelect = false;
-            this.dgvAlbum.Name = "dgvAlbum";
-            this.dgvAlbum.ReadOnly = true;
-            this.dgvAlbum.RowHeadersVisible = false;
-            this.dgvAlbum.RowTemplate.Height = 25;
-            this.dgvAlbum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAlbum.Size = new System.Drawing.Size(796, 261);
-            this.dgvAlbum.TabIndex = 5;
-            this.dgvAlbum.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlbum_CellClick);
+            this.dgvAlbumDetail.Location = new System.Drawing.Point(9, 72);
+            this.dgvAlbumDetail.MultiSelect = false;
+            this.dgvAlbumDetail.Name = "dgvAlbumDetail";
+            this.dgvAlbumDetail.ReadOnly = true;
+            this.dgvAlbumDetail.RowHeadersVisible = false;
+            this.dgvAlbumDetail.RowTemplate.Height = 25;
+            this.dgvAlbumDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAlbumDetail.Size = new System.Drawing.Size(607, 249);
+            this.dgvAlbumDetail.TabIndex = 5;
+            this.dgvAlbumDetail.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAlbumDetail_CellClick);
             // 
             // Id
             // 
-            this.Id.FillWeight = 50F;
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
@@ -148,24 +140,12 @@
             this.AlbumName.Name = "AlbumName";
             this.AlbumName.ReadOnly = true;
             // 
-            // ReleaseDate
+            // SongTitle
             // 
-            this.ReleaseDate.HeaderText = "Release Date";
-            this.ReleaseDate.Name = "ReleaseDate";
-            this.ReleaseDate.ReadOnly = true;
-            // 
-            // Singer
-            // 
-            this.Singer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Singer.HeaderText = "Singer";
-            this.Singer.Name = "Singer";
-            this.Singer.ReadOnly = true;
-            // 
-            // Genre
-            // 
-            this.Genre.HeaderText = "Genre";
-            this.Genre.Name = "Genre";
-            this.Genre.ReadOnly = true;
+            this.SongTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SongTitle.HeaderText = "Song Title";
+            this.SongTitle.Name = "SongTitle";
+            this.SongTitle.ReadOnly = true;
             // 
             // edit
             // 
@@ -191,7 +171,7 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(338, 495);
+            this.btnReturn.Location = new System.Drawing.Point(257, 420);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(75, 23);
             this.btnReturn.TabIndex = 7;
@@ -201,50 +181,39 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmbGenre);
-            this.groupBox1.Controls.Add(this.cmbArtist);
-            this.groupBox1.Controls.Add(this.dtpActiveFrom);
+            this.groupBox1.Controls.Add(this.cmbSong);
+            this.groupBox1.Controls.Add(this.cmbAlbum);
             this.groupBox1.Controls.Add(this.btnSave);
-            this.groupBox1.Controls.Add(this.txtAlbumName);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(2, 347);
+            this.groupBox1.Location = new System.Drawing.Point(9, 327);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(796, 142);
-            this.groupBox1.TabIndex = 8;
+            this.groupBox1.Size = new System.Drawing.Size(610, 82);
+            this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Record";
             // 
-            // cmbGenre
+            // cmbSong
             // 
-            this.cmbGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGenre.FormattingEnabled = true;
-            this.cmbGenre.Location = new System.Drawing.Point(379, 69);
-            this.cmbGenre.Name = "cmbGenre";
-            this.cmbGenre.Size = new System.Drawing.Size(200, 23);
-            this.cmbGenre.TabIndex = 4;
+            this.cmbSong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSong.FormattingEnabled = true;
+            this.cmbSong.Location = new System.Drawing.Point(339, 19);
+            this.cmbSong.Name = "cmbSong";
+            this.cmbSong.Size = new System.Drawing.Size(200, 23);
+            this.cmbSong.TabIndex = 4;
             // 
-            // cmbArtist
+            // cmbAlbum
             // 
-            this.cmbArtist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbArtist.FormattingEnabled = true;
-            this.cmbArtist.Location = new System.Drawing.Point(88, 69);
-            this.cmbArtist.Name = "cmbArtist";
-            this.cmbArtist.Size = new System.Drawing.Size(196, 23);
-            this.cmbArtist.TabIndex = 4;
-            // 
-            // dtpActiveFrom
-            // 
-            this.dtpActiveFrom.Location = new System.Drawing.Point(379, 25);
-            this.dtpActiveFrom.Name = "dtpActiveFrom";
-            this.dtpActiveFrom.Size = new System.Drawing.Size(200, 23);
-            this.dtpActiveFrom.TabIndex = 3;
+            this.cmbAlbum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAlbum.FormattingEnabled = true;
+            this.cmbAlbum.Location = new System.Drawing.Point(48, 19);
+            this.cmbAlbum.Name = "cmbAlbum";
+            this.cmbAlbum.Size = new System.Drawing.Size(196, 23);
+            this.cmbAlbum.TabIndex = 4;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(88, 106);
+            this.btnSave.Location = new System.Drawing.Point(48, 52);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(103, 23);
             this.btnSave.TabIndex = 2;
@@ -252,69 +221,43 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtAlbumName
-            // 
-            this.txtAlbumName.Location = new System.Drawing.Point(88, 25);
-            this.txtAlbumName.Name = "txtAlbumName";
-            this.txtAlbumName.Size = new System.Drawing.Size(196, 23);
-            this.txtAlbumName.TabIndex = 1;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(336, 72);
+            this.label5.Location = new System.Drawing.Point(296, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 15);
+            this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Genre:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(299, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Release Date:";
+            this.label5.Text = "Song:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(45, 72);
+            this.label4.Location = new System.Drawing.Point(5, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 15);
+            this.label4.Size = new System.Drawing.Size(46, 15);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Artist:";
+            this.label4.Text = "Album:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Album Name:";
-            // 
-            // frmAlbum
+            // frmAlbumDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 527);
+            this.ClientSize = new System.Drawing.Size(624, 454);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnReturn);
-            this.Controls.Add(this.dgvAlbum);
+            this.Controls.Add(this.dgvAlbumDetail);
             this.Controls.Add(this.groupBox2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmAlbum";
+            this.Name = "frmAlbumDetail";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Album";
-            this.Load += new System.EventHandler(this.frmAlbum_Load);
+            this.Text = "Album Detail";
+            this.Load += new System.EventHandler(this.frmAlbumDetail_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbumDetail)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -328,24 +271,18 @@
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvAlbum;
-        private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtAlbumName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbGenre;
-        private System.Windows.Forms.ComboBox cmbArtist;
-        private System.Windows.Forms.DateTimePicker dtpActiveFrom;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvAlbumDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn AlbumName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReleaseDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Singer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Genre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SongTitle;
         private System.Windows.Forms.DataGridViewButtonColumn edit;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbSong;
+        private System.Windows.Forms.ComboBox cmbAlbum;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

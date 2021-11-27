@@ -48,6 +48,7 @@ namespace Demo4WebApi
         private async void frmAlbum_Load(object sender, EventArgs e)
         {
             await LoadComboBoxes();
+            await LoadData();
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -114,6 +115,22 @@ namespace Demo4WebApi
                         }
                     }
                 }
+            }
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                var item = await new WebApiHelper<AlbumDto>().GetByIdAsync("api/albums/", Convert.ToInt32(txtId.Text));
+                if (item != null)
+                {
+                    dgvAlbum.Rows.Clear();
+                    dgvAlbum.Rows.Add(item.Id, item.AlbumName, item.ReleaseDate.ToString("yyyy/MM/dd"), item.ArtistName, item.GenreName);
+                    dgvAlbum.Rows[dgvAlbum.RowCount - 1].Tag = item.Id;
+                }
+                else
+                    MessageBox.Show("The record not found!");
             }
         }
     }
