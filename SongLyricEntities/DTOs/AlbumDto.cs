@@ -11,6 +11,7 @@ namespace SongLyricEntities.DTOs
         public int Id { get; set; }
         public string AlbumName { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public int? ArtistId { get; set; }
+        public string ArtistName { get; set; }
+        public string GenreName { get; set; }
     }
 }

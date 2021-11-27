@@ -93,6 +93,7 @@
             this.menuAlbum.Name = "menuAlbum";
             this.menuAlbum.Size = new System.Drawing.Size(55, 20);
             this.menuAlbum.Text = "Album";
+            this.menuAlbum.Click += new System.EventHandler(this.menuAlbum_Click);
             // 
             // frmMain
             // 

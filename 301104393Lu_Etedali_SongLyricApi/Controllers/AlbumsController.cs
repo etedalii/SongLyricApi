@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SongLyricDataAccess.Data;
 using SongLyricDataAccess.Data.Repository.IRepository;
 using SongLyricEntities;
+using SongLyricEntities.DTOs;
 
 namespace _301104393Lu_Etedali_SongLyricApi.Controllers
 {
@@ -16,31 +18,47 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
     public class AlbumsController : ControllerBase
     {
         private readonly IUnitOfWork _context;
+        private readonly IMapper _mapper;
 
-        public AlbumsController(IUnitOfWork context)
+        public AlbumsController(IUnitOfWork context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Albums
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
         {
-            return Ok(await _context.Album.GetAllAsync());
+            var albums = await _context.Album.GetAllAsync();
+            var artists = await _context.Artist.GetAllAsync();
+            var genres = await _context.Genre.GetAllAsync();
+
+            var query =
+               (from album in albums
+               join artist in artists on album.ArtistId equals artist.Id
+               join genre in genres on album.GenreId equals genre.Id
+               select new { Id = album.Id,  AlbumName = album.AlbumName, ReleaseDate = album.ReleaseDate, ArtistName = artist.ArtistName, GenreName = genre.GenreName }).ToList();
+
+            return Ok(query);
         }
 
         // GET: api/Albums/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Album>> GetAlbum(int id)
         {
-            var album = await _context.Album.FindAsync(id);
+            var albums = await _context.Album.GetAllAsync();
+            var artists = await _context.Artist.GetAllAsync();
+            var genres = await _context.Genre.GetAllAsync();
 
-            if (album == null)
-            {
-                return NotFound();
-            }
+            var query =
+                (from album in albums
+                 join artist in artists on album.ArtistId equals artist.Id
+                 join genre in genres on album.GenreId equals genre.Id
+                 where album.Id == id
+                 select new { Id = album.Id, AlbumName = album.AlbumName, ReleaseDate = album.ReleaseDate, ArtistName = artist.ArtistName, GenreName = genre.GenreName }).ToList();
 
-            return Ok(album);
+            return Ok(query);
         }
 
         // PUT: api/Albums/5
@@ -48,15 +66,23 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAlbum(int id, Album album)
         {
-            if (id != album.Id)
-            {
+            if (album == null)
                 return BadRequest();
-            }
 
-            _context.Album.Update(album);   
+            var oldAlbum = _context.Album.Find(id);
+            var result = _mapper.Map<Album>(album);
+            oldAlbum.AlbumName = result.AlbumName;
+            oldAlbum.ArtistId = result.ArtistId;
+            oldAlbum.GenreId = result.GenreId;
+            oldAlbum.ReleaseDate = result.ReleaseDate;
+
+            _context.Album.Update(oldAlbum);
             try
             {
-                await _context.SaveAsync();
+                if (await _context.SaveAsync() == 0)
+                {
+                    return StatusCode(500, "A problem with handelling your request.");
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,10 +104,18 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Album>> PostAlbum(Album album)
         {
-            _context.Album.Insert(album);
-            await _context.SaveAsync();
+            if (album == null)
+                return BadRequest();
 
-            return Ok(album);
+            var result = _mapper.Map<Album>(album);
+            _context.Album.Insert(new Album() { AlbumName = result.AlbumName, ArtistId = result.ArtistId, GenreId = result.GenreId,ReleaseDate = result.ReleaseDate });
+            if (await _context.SaveAsync() == 0)
+            {
+                return StatusCode(500, "A problem with handelling your request.");
+            }
+
+            var createAlbum = _mapper.Map<Album>(result);
+            return Ok(createAlbum);
         }
 
         // DELETE: api/Albums/5
