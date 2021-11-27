@@ -32,11 +32,7 @@ namespace _301104393Lu_Etedali_SongLyricApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("DefaultConnection"));
-            builder.UserID = Configuration["DbUser"];
-            builder.Password = Configuration["DbPassword"];
-            var connection = builder.ConnectionString;
-            services.AddDbContext<SongLyricDbContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<SongLyricDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -53,12 +49,12 @@ namespace _301104393Lu_Etedali_SongLyricApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
-            //if (env.IsDevelopment())
-           // {
+           if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "_301104393Lu_Etedali_SongLyricApi v1"));
-           // }
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "_301104393Lu_Etedali_SongLyricApi v1"));
+            }
 
             app.UseHttpsRedirection();
 
