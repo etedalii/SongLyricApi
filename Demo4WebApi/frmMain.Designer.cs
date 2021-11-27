@@ -76,6 +76,7 @@
             this.menuArtist.Name = "menuArtist";
             this.menuArtist.Size = new System.Drawing.Size(47, 20);
             this.menuArtist.Text = "Artist";
+            this.menuArtist.Click += new System.EventHandler(this.menuArtist_Click);
             // 
             // frmMain
             // 

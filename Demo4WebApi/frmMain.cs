@@ -23,5 +23,11 @@ namespace Demo4WebApi
             frmGenre artist = new frmGenre();
             artist.ShowDialog();
         }
+
+        private void menuArtist_Click(object sender, EventArgs e)
+        {
+            frmArtist frm = new frmArtist();
+            frm.ShowDialog();
+        }
     }
 }
