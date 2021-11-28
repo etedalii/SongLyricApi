@@ -133,7 +133,7 @@
             // 
             // ArtistName
             // 
-            this.ArtistName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ArtistName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ArtistName.HeaderText = "Artist Name";
             this.ArtistName.MinimumWidth = 100;
             this.ArtistName.Name = "ArtistName";
@@ -148,6 +148,7 @@
             // edit
             // 
             this.edit.FillWeight = 50F;
+            this.edit.Width = 50;
             this.edit.HeaderText = "Edit";
             this.edit.Name = "edit";
             this.edit.ReadOnly = true;
@@ -158,6 +159,7 @@
             // Delete
             // 
             this.Delete.FillWeight = 50F;
+            this.Delete.Width = 50;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;

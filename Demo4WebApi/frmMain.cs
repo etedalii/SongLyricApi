@@ -47,5 +47,13 @@ namespace Demo4WebApi
             frmAlbumDetail frm = new frmAlbumDetail();
             frm.ShowDialog();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtSong.Text) || !string.IsNullOrEmpty(txtLyric.Text))
+            {
+
+            }
+        }
     }
 }
