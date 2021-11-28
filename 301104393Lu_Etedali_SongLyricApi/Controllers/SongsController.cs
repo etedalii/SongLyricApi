@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SongLyricDataAccess.Data.Repository.IRepository;
 using SongLyricEntities;
+using SongLyricEntities.DTOs;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace _301104393Lu_Etedali_SongLyricApi.Controllers
@@ -12,10 +15,11 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
     public class SongsController : ControllerBase
     {
         private readonly IUnitOfWork _context;
-
-        public SongsController(IUnitOfWork context)
+        private readonly IMapper _mapper;
+        public SongsController(IUnitOfWork context,  IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Songs
@@ -37,6 +41,14 @@ namespace _301104393Lu_Etedali_SongLyricApi.Controllers
             }
 
             return Ok(song);
+        }
+
+        [HttpGet("/api/Songs/getbytitle/{title}")]
+        public async Task<ActionResult<Song>> GetByTitle(string title)
+        {
+            var songs = await _context.Song.GetAllAsync(_ => _.Lyric.Contains(title) || _.Title.Contains(title));
+            var result = _mapper.Map<IEnumerable<SongWithoutIdDto>>(songs);
+            return Ok(result);
         }
 
         // PUT: api/Songs/5

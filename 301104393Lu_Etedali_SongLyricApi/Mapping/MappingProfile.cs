@@ -14,6 +14,8 @@ namespace _301104393Lu_Etedali_SongLyricApi.Mapping
             CreateMap<Artist, ArtistDto>();
             CreateMap<GenreForCreationDto, Genre>();
             CreateMap<GenreForUpdateDto, Genre>();
+
+            CreateMap<Song, SongWithoutIdDto>();
         }
     }
 }

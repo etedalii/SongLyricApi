@@ -37,12 +37,10 @@
             this.SAlbum = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAlbum = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAlbumDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblLyric = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtSong = new System.Windows.Forms.TextBox();
-            this.txtLyric = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtLyric = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -120,14 +118,6 @@
             this.menuAlbumDetail.Text = "AlbumDetails";
             this.menuAlbumDetail.Click += new System.EventHandler(this.menuAlbumDetail_Click);
             // 
-            // lblLyric
-            // 
-            this.lblLyric.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblLyric.Location = new System.Drawing.Point(12, 101);
-            this.lblLyric.Name = "lblLyric";
-            this.lblLyric.Size = new System.Drawing.Size(710, 266);
-            this.lblLyric.TabIndex = 2;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -137,15 +127,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Song Title";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Song Lyric";
-            // 
             // txtSong
             // 
             this.txtSong.Location = new System.Drawing.Point(76, 33);
@@ -153,22 +134,25 @@
             this.txtSong.Size = new System.Drawing.Size(198, 23);
             this.txtSong.TabIndex = 3;
             // 
-            // txtLyric
-            // 
-            this.txtLyric.Location = new System.Drawing.Point(76, 65);
-            this.txtLyric.Name = "txtLyric";
-            this.txtLyric.Size = new System.Drawing.Size(441, 23);
-            this.txtLyric.TabIndex = 3;
-            // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(524, 33);
+            this.btnSearch.Location = new System.Drawing.Point(280, 33);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(124, 54);
+            this.btnSearch.Size = new System.Drawing.Size(132, 23);
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search Lyric";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtLyric
+            // 
+            this.txtLyric.Location = new System.Drawing.Point(12, 62);
+            this.txtLyric.Multiline = true;
+            this.txtLyric.Name = "txtLyric";
+            this.txtLyric.ReadOnly = true;
+            this.txtLyric.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLyric.Size = new System.Drawing.Size(710, 317);
+            this.txtLyric.TabIndex = 5;
             // 
             // frmMain
             // 
@@ -176,12 +160,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(734, 404);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtLyric);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSong);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblLyric);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -211,11 +193,9 @@
         private System.Windows.Forms.ToolStripMenuItem SAlbum;
         private System.Windows.Forms.ToolStripMenuItem menuAlbum;
         private System.Windows.Forms.ToolStripMenuItem menuAlbumDetail;
-        private System.Windows.Forms.Label lblLyric;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSong;
-        private System.Windows.Forms.TextBox txtLyric;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtLyric;
     }
 }

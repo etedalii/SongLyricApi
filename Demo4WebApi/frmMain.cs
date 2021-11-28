@@ -1,4 +1,5 @@
 ﻿using SongLyricDataAccess.Data.Repository.IRepository;
+using SongLyricEntities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace Demo4WebApi
             InitializeComponent();
         }
 
-         private void menuGenre_Click(object sender, EventArgs e)
+        private void menuGenre_Click(object sender, EventArgs e)
         {
             frmGenre artist = new frmGenre();
             artist.ShowDialog();
@@ -48,11 +49,14 @@ namespace Demo4WebApi
             frm.ShowDialog();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(txtSong.Text) || !string.IsNullOrEmpty(txtLyric.Text))
+            if (!string.IsNullOrEmpty(txtSong.Text))
             {
-
+                txtLyric.Text = string.Empty;
+                var items = await new WebApiHelper<Song>().GetByValueListAsync("api/Songs/getbytitle/", txtSong.Text);
+                foreach (var item in items)
+                    txtLyric.Text += $"Title:\t{item.Title}\r\nLyric:\t{item.Lyric}\n";
             }
         }
     }

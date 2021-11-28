@@ -95,6 +95,32 @@ namespace Demo4WebApi
             return Enumerable.Empty<T>();
         }
 
+        public async Task<IEnumerable<T>> GetByValueListAsync(string path, string id)
+        {
+            client.BaseAddress = new Uri(url);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            try
+            {
+                HttpResponseMessage response;
+                response = await client.GetAsync($"{path.TrimEnd('/')}/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    IEnumerable<T> items = JsonConvert.DeserializeObject<IEnumerable<T>>(json);
+                    return items;
+                }
+                else
+                    return Enumerable.Empty<T>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Enumerable.Empty<T>();
+        }
+
         public async Task<T> AddAsync(string path, T item)
         {
             client.BaseAddress = new Uri(url);

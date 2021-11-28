@@ -40,12 +40,12 @@
             this.edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpActiveFrom = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtArtistName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpActiveFrom = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtist)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -148,24 +148,24 @@
             // edit
             // 
             this.edit.FillWeight = 50F;
-            this.edit.Width = 50;
             this.edit.HeaderText = "Edit";
             this.edit.Name = "edit";
             this.edit.ReadOnly = true;
             this.edit.Text = "Edit";
             this.edit.ToolTipText = "Edit";
             this.edit.UseColumnTextForButtonValue = true;
+            this.edit.Width = 50;
             // 
             // Delete
             // 
             this.Delete.FillWeight = 50F;
-            this.Delete.Width = 50;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Text = "Delete";
             this.Delete.ToolTipText = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
+            this.Delete.Width = 50;
             // 
             // groupBox1
             // 
@@ -180,6 +180,13 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Record";
+            // 
+            // dtpActiveFrom
+            // 
+            this.dtpActiveFrom.Location = new System.Drawing.Point(379, 25);
+            this.dtpActiveFrom.Name = "dtpActiveFrom";
+            this.dtpActiveFrom.Size = new System.Drawing.Size(200, 23);
+            this.dtpActiveFrom.TabIndex = 3;
             // 
             // btnSave
             // 
@@ -197,6 +204,15 @@
             this.txtArtistName.Name = "txtArtistName";
             this.txtArtistName.Size = new System.Drawing.Size(196, 23);
             this.txtArtistName.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(299, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Active From:";
             // 
             // label1
             // 
@@ -217,22 +233,6 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(299, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Active From:";
-            // 
-            // dtpActiveFrom
-            // 
-            this.dtpActiveFrom.Location = new System.Drawing.Point(379, 25);
-            this.dtpActiveFrom.Name = "dtpActiveFrom";
-            this.dtpActiveFrom.Size = new System.Drawing.Size(200, 23);
-            this.dtpActiveFrom.TabIndex = 3;
-            // 
             // frmArtist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -247,6 +247,7 @@
             this.MinimizeBox = false;
             this.Name = "frmArtist";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Artist";
             this.Load += new System.EventHandler(this.frmArtist_Load);
             this.groupBox2.ResumeLayout(false);
