@@ -77,15 +77,14 @@ namespace Demo4WebApi
 
         private async Task LoadData()
         {
-            var item = await new WebApiHelper<AlbumDetailDto>().GetByIdAsync("api/AlbumDetails/", Convert.ToInt32(cmbAlbumSearch.SelectedValue));
-            if (item != null)
+            dgvAlbumDetail.Rows.Clear();
+
+            var items = await new WebApiHelper<AlbumDetailDto>().GetByIdListAsync("api/AlbumDetails/", Convert.ToInt32(cmbAlbumSearch.SelectedValue));
+            foreach (var item in items)
             {
-                dgvAlbumDetail.Rows.Clear();
                 dgvAlbumDetail.Rows.Add(item.Id, item.AlbumName, item.SongTitle);
                 dgvAlbumDetail.Rows[dgvAlbumDetail.RowCount - 1].Tag = item.Id;
             }
-            else
-                MessageBox.Show("The record not found!");
         }
 
         private async void dgvAlbumDetail_CellClick(object sender, DataGridViewCellEventArgs e)
